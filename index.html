@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>My New Website :: Home</title>
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     </head>
     <body>
         <header>
             <nav>
-                <ul>
+                <ul class="menu">
                     <li><a href="https://github.com/natpoulson">Github</a></li>
                     <li><a href="#" title="Coming soon!">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -25,11 +25,11 @@
                     <figcaption>Lorem ipsum dolor, sit amet consectetur elit.</figcaption>
                 </figure>
             </section>
-            <section name="contact">
+            <section>
                 <h2>Contact Me</h2>
-                <form action="">
-                    <label for="name">Name:</label><input type="text" name="name" id="contact-name" />
-                    <label for="email">Name:</label><input type="email" name="email" id="contact-email" />
+                <form id="contact" action="submit">
+                    <label for="contact-name">Name: <input type="text" name="name" id="contact-name" /></label>
+                    <label for="contact-email">Email: <input type="email" name="email" id="contact-email" /></label>
                     <button type="submit">SEND</button>
                 </form>
             </section>

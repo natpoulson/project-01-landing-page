@@ -1,0 +1,78 @@
+/* Define document fonts, reset browser spacing, set default font colour of white to contrast against the darker red */
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #FFF;
+    padding: 0;
+    margin: 0;
+}
+
+/* Set header to follow viewport and start from the right */
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    border: solid #ffc533;
+    border-width: 0 0 5px 15px;
+    border-radius: 0 0 0 20px;
+    padding: 0 0 3px 10px;
+}
+
+/* Create a pseudo-element for an inner-radius
+   Thanks to https://blog.logrocket.com/how-to-create-fancy-corners-in-css/ for the tip!
+ */
+header::before {
+    content: "";
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    left: 0;
+    bottom: 0;
+    border-radius: 0 0 0 10px;
+    box-shadow: -5px 5px 0 0 #ffc533;
+}
+
+/* Align only the main and footer areas to centre */
+main, footer {
+    text-align: center;
+}
+
+/* Configure body and nav as ancestors for fixed/absolute positioning */
+body, nav {
+    position: relative;
+}
+
+/* Setting up a nice red that contrasts well with the border colour used. */
+body { 
+    background-color: #500;
+}
+
+/* Configure menu items to be inline so they don't stack on each other */
+.menu li {
+    display: inline;
+    padding: 5px 10px 5px 5px;
+}
+
+/* Give the first list item a little extra space to breathe */
+.menu li:first-of-type {
+    padding-left: 15px;
+}
+
+/* Want to make the menu have a retro-futuristic look, with an adequate amount of spacing around the links so it doesn't look constricted. */
+.menu {
+    border: solid #ffc533;
+    border-width: 0 0 5px 10px;
+    border-radius: 0 0 0 10px;
+    padding: 3px 0;
+}
+
+/* Reusing the same trick as with the header, will need to practice this a bit to make the effect work consistently! */
+.menu::before {
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    bottom: 0.1rem;
+    left: 0.5rem;
+    border-radius: 0 0 0 15px;
+    box-shadow: -5px 0 0 0 #ffc533;
+}
