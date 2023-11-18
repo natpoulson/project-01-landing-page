@@ -11,10 +11,12 @@ header {
     position: fixed;
     top: 0;
     right: 0;
+    background-color: #A00;
     border: solid #ffc533;
     border-width: 0 0 5px 15px;
     border-radius: 0 0 0 20px;
     padding: 0 0 3px 10px;
+    box-shadow: -0.7rem 0.2rem 0 0.3rem #A00;
 }
 
 /* Create a pseudo-element for an inner-radius
@@ -31,6 +33,29 @@ header::before {
     box-shadow: -5px 5px 0 0 #ffc533;
 }
 
+/* Some styling sugar to help smooth the transition from the header menu to the body border */
+header::after {
+    content: "";
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    bottom: -2.3rem;
+    right: 20px;
+    border-radius: 0 20px 0 0;
+    box-shadow: 1rem -0.3rem 0 0 #ffc533;
+}
+
+/* A small block that helps hide a gap that otherwise can't seem to be covered with just the header styles. */
+nav::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 0;
+    bottom: -1.5rem;
+    background-color: #ffc533;
+}
+
 /* Align only the main and footer areas to centre */
 main, footer {
     text-align: center;
@@ -42,37 +67,257 @@ body, nav {
 }
 
 /* Setting up a nice red that contrasts well with the border colour used. */
-body { 
+body {
+    position: relative;
     background-color: #500;
+    border: solid #ffc533;
+    border-width: 0 20px 10px 0;
+    border-radius: 0 0 50px 0;
+}
+
+/* Adding a seam along the bottom-right side of the page to create a smoother seam between the side navigation, and the rest of the page */
+body::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    left: 0;
+    bottom: -40px;
+    border-radius: 100px 0 0 0;
+    box-shadow: -2rem 0 0 0 #ffc533;
+}
+
+/* Add some spacing on the headings, and colour them like the borders to stand out a bit from the rest of the text */
+h1, h2 {
+    margin: 15px 0 20px 0;
+    color: #ffc533;
+}
+
+/* Blended frame with figcaption, and a nice aftershadow effect */
+figure {
+    position: relative;
+    display: inline-block;
+    border: solid #ffc533;
+    border-width: 1rem 1.2rem 0 1.2rem;
+    border-radius: 20px;
+    box-shadow: -0.3rem -0.3rem 0 0 #A00;
+    z-index: 1;
+}
+
+/* Add some rounding to the figure frame so if the caption is larger than the media, it will still look nice. */
+figure::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 20px 0 0;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow: 0 -0.5rem 0 0.3rem #ffc533;
+}
+
+/* Set the figure caption to be part of the border */
+figcaption {
+    position: relative;
+    background-color: #ffc533;
+    padding: 10px 0 10px 0;
+    margin-top: -0.3rem;
+    color: #500;
+}
+
+/* Create a decorative touch that looks like a gap */
+figcaption::before {
+    content: "";
+    position: absolute;
+    width: 1.3rem;
+    height: 1.3rem;
+    background-color: #500;
+    border-radius: 30px 40px 40px 40px;
+    left: -0.5rem;
+    box-shadow: inset -0.2rem -0.3rem 0 0 #A00;
+}
+
+/* Add a rounded edge for the bottom half of a parent caption so if the description is wider than the media, it will be nice and rounded on the inside */
+figcaption::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1rem;
+    top: -1rem;
+    left: 0;
+    z-index: -1;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 0.5rem 0 0.1rem #ffc533;
+}
+
+/* Add some space between the footer and the rest of the page, add a border for the copy text effect */
+footer {
+    position: relative;
+    margin-top: 3rem;
+    border: solid #ffc533;
+    border-width: 10px 0 0 0;
+    padding: 5px 0;
+}
+
+/* Mirror the layout used for the body's decoration for symmetry */
+footer::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    left: 0;
+    top: -2.5rem;
+    border-radius: 0 0 0 100px;
+    box-shadow: -2rem 0 0 0 #ffc533;
+}
+
+/* Add inner curve for the side bar */
+footer::after {
+    content: "";
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    right: 0;
+    top: -3.6rem;
+    border-radius: 0 0 40px 0;
+    box-shadow: 1.5rem 0.3rem 0 0.3rem #ffc533;
+}
+
+/* Set some padding and make the menu relative for absolute positioning of pseudo-elements */
+.menu {
+    position: relative;
+    padding: 5px 0;
 }
 
 /* Configure menu items to be inline so they don't stack on each other */
 .menu li {
     display: inline;
-    padding: 5px 10px 5px 5px;
+    padding: 0 10px 0 0;
+    list-style: none;
 }
 
 /* Give the first list item a little extra space to breathe */
 .menu li:first-of-type {
-    padding-left: 15px;
+    padding-left: 10px;
 }
 
-/* Want to make the menu have a retro-futuristic look, with an adequate amount of spacing around the links so it doesn't look constricted. */
-.menu {
+/* Remove the underline for hyperlinks, set some spacing and enable transition effects on hover to indicate interactivity */
+.menu a {
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0 5px;
+    transition-property: color, background-color;
+    transition-duration: 0.3s;
+}
+
+/* Define colours for hover effect */
+.menu a:hover {
+    background-color: #FFF;
+    color: #500;
+}
+
+/* Creating the border for the contact area, and adding somme padding to space it out from the inner elements */
+#contact {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
     border: solid #ffc533;
-    border-width: 0 0 5px 10px;
-    border-radius: 0 0 0 10px;
-    padding: 3px 0;
+    border-width: 10px 20px;
+    border-radius: 30px 20px 30px 20px;
+    box-shadow: -0.3rem -0.3rem 0 0 #A00;
 }
 
-/* Reusing the same trick as with the header, will need to practice this a bit to make the effect work consistently! */
-.menu::before {
+/* Inner edge rounding on left side */
+#contact::before {
     content: "";
     position: absolute;
-    width: 1rem;
-    height: 1rem;
-    bottom: 0.1rem;
-    left: 0.5rem;
-    border-radius: 0 0 0 15px;
-    box-shadow: -5px 0 0 0 #ffc533;
+    width: 50%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 20px 0 0 30px;
+    box-shadow: -0.9rem 0 0 0.3rem #ffc533;
+}
+
+/* Inner edge rounding on right side */
+#contact::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    border-radius: 0 30px 20px 0;
+    box-shadow: 0.9rem 0 0 0.3rem #ffc533;
+}
+
+/* Make the labels (and their contents) take up all available space within the contact me area, line the text areas up by right-aligning everything */
+#contact label {
+    display: block;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+    color: #ffc533;
+    font-weight: bold;
+}
+
+/* Set the width of the contact fields so they're a bit bigger, add some styling as well to bring it in line with everything else */
+#contact input {
+    width: 300px;
+    position: relative;
+    z-index: 2;
+    background-color: #A00;
+    border: solid 1px #ffc533;
+    padding: 0 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+/* Decided to play around with the effects for this one, such as adding a border that isn't evenly rounded, and adding an aftershadow effect, also add a transition for colours */
+#contact button {
+    position: relative;
+    background-color: #A00;
+    padding: 5px 20px;
+    margin-top: 20px;
+    border: solid 5px #ffc533;
+    border-radius: 30px 10px 30px 10px;
+    font-weight: bold;
+    z-index: 2;
+    box-shadow: -0.2rem -0.2rem 0 0 #A00;
+    transition-duration: 0.3s;
+    transition-property: color, background-color;
+}
+
+/* Define colours for hover effect */
+#contact button:hover {
+    color: #500;
+    background-color: #FFF;
+}
+
+/* The fanned corner on the top left of the button */
+#contact button::before {
+    content: "";
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    left: -0.4rem;
+    top: -0.4rem;
+    border-radius: 60px 0 0 0;
+    z-index: 0;
+    box-shadow: -0.2rem -0.2rem 0 0 #ffc533;
+}
+
+/* The dot on the bottom right corner */
+#contact button::after {
+    content: "";
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #ffc533;
+    border-radius: 20px;
+    bottom: -0.3rem;
+    right: -0.4rem;
+    z-index: 0;
 }
