@@ -20,6 +20,9 @@ The site can be browsed in its entirety without any special requirements. There 
 - Currently the contact me form does nothing, and is purely for display purposes.
 - The portfolio link doesn't go anywhere, but it will show a little tooltip that there's content coming soon.
 
+## Preview
+![A screenshot of the project's page via Mozilla Firefox](./assets/preview-screenshot.png)
+
 ## Credits
 The following resources were extremely helpful in honing understanding of the following topics:
 - CSS Positioning: Kevin Powell (Director). (2023, November 15). CSS position deep dive. https://www.youtube.com/watch?v=fF_NVrd1s14
