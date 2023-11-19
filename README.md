@@ -14,6 +14,8 @@ Skills learned in the process of developing this page included:
 Additionally, the project features a lot of CSS tricks involving the ::before and ::after pseudo-selectors to create inner radii for various elements, testing out how they interact and finding comfortable sizing for most situations.
 
 ## Usage
+You can access the project's GitHub Page here: https://natpoulson.github.io/project-01-landing-page/
+
 The site can be browsed in its entirety without any special requirements. There are a couple of things to note however:
 - Currently the contact me form does nothing, and is purely for display purposes.
 - The portfolio link doesn't go anywhere, but it will show a little tooltip that there's content coming soon.
